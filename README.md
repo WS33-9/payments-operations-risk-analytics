@@ -113,5 +113,4 @@ python -m streamlit run app.py
 
 Wanlin Song
 
-Bachelor of Commerce candidate
-Double Major in Finance and Business Technology Management
+
