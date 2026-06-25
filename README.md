@@ -42,11 +42,14 @@ The project:
 
 ## Dashboard Preview
 
-![Executive Overview](outputs/executive_overview.png)
+![Executive Overview](outputs/dashboard_home.png)
 
-![Reconciliation Dashboard](outputs/reconciliation_dashboard.png)
+![Operations Dashboard](outputs/dashboard_operations.png)
 
-![Risk Dashboard](outputs/risk_dashboard.png)
+![Reconciliation Dashboard](outputs/dashboard_reconciliation.png)
+
+![Risk Dashboard](outputs/dashboard_risk.png)
+
 
 ## Key Findings
 
