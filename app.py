@@ -1,10 +1,30 @@
 from pathlib import Path
+import subprocess
+import sys
+
 import duckdb
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
 
-DB = "payments_analytics.duckdb"
+DATABASE_FILE = Path("payments_analytics.duckdb")
+
+
+def prepare_database():
+    if not DATABASE_FILE.exists():
+        subprocess.run(
+            [sys.executable, "generate_data.py"],
+            check=True,
+        )
+
+        subprocess.run(
+            [sys.executable, "build_database.py"],
+            check=True,
+        )
+
+
+prepare_database()
 
 st.set_page_config(
     page_title="Payments Intelligence",
@@ -55,7 +75,7 @@ div[data-testid="stMetricValue"] {color:#0F172A; font-weight:700;}
 
 @st.cache_data
 def load_data():
-    con = duckdb.connect(DB, read_only=True)
+    con = duckdb.connect(str(DATABASE_FILE), read_only=True)
     tx = con.execute("SELECT * FROM transactions").df()
     rec = con.execute("SELECT * FROM reconciliation_exceptions").df()
     quality = con.execute("SELECT * FROM data_quality_summary").df()
